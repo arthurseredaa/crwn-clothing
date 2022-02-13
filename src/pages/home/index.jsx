@@ -1,8 +1,8 @@
 import { Directory } from '../../components/directory/directory';
-import './homepage.scss';
+import './home.scss';
 
 
-export const HomePage = () => (
+export const Home = () => (
   <div className="homepage">
     <Directory />
   </div>

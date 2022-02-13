@@ -38,8 +38,8 @@ const menuItemTitles = [
 
 export const Directory = () => (
   <div className="directory-menu">
-    {menuItemTitles.map((menuItem) => (
-      <MenuItem key={menuItem.id} {...menuItem} />
+    {menuItemTitles.map(({ id, ...restProps }) => (
+      <MenuItem key={id} {...restProps} />
     ))}
   </div>
 );
