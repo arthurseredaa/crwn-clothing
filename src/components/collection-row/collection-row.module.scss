@@ -1,7 +1,6 @@
 .collectionRow {
   max-width: 1400px;
   margin: 0 auto 50px;
-  padding: 0 14px;
 }
 
 .rowTitleLink {
@@ -11,6 +10,10 @@
   display: inline-block;
   margin-bottom: 20px;
   position: relative;
+
+  &:hover {
+    color: #e67e22;
+  }
 
   &:hover:after {
     content: '';
