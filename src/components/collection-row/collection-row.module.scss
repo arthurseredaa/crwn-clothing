@@ -1,0 +1,36 @@
+.collectionRow {
+  max-width: 1400px;
+  margin: 0 auto 50px;
+  padding: 0 14px;
+}
+
+.rowTitleLink {
+  text-decoration: none;
+  color: #4a4a4a;
+  transition: all 0.1s linear;
+  display: inline-block;
+  margin-bottom: 20px;
+  position: relative;
+
+  &:hover:after {
+    content: '';
+    position: absolute;
+    height: 1px;
+    left: 0;
+    width: 100%;
+    background-color: #4a4a4a;
+  }
+
+  .rowTitle {
+    margin: 0;
+    font-size: 40px;
+  }
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  gap: 10px;
+}

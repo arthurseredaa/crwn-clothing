@@ -7,6 +7,7 @@ import { Sneakers } from './pages/sneakers';
 import { Womens } from './pages/womens';
 import { Mens } from './pages/mens';
 import './App.css';
+import { Shop } from './pages/shop/shop';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       <Route path="/shop/sneakers" element={<Sneakers />} />
       <Route path="/shop/womens" element={<Womens />} />
       <Route path="/shop/mens" element={<Mens />} />
+      <Route path="/shop" element={<Shop />} />
     </Routes>
   );
 }
