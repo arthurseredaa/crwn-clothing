@@ -9,6 +9,7 @@ import { Womens } from './pages/womens';
 import { Mens } from './pages/mens';
 import { Shop } from './pages/shop/shop';
 import { Header } from './components/header/header';
+import { SignIn } from './pages/sign-in/sign-in';
 
 import './App.css';
 
@@ -24,6 +25,7 @@ function App() {
         <Route path="/shop/womens" element={<Womens />} />
         <Route path="/shop/mens" element={<Mens />} />
         <Route path="/shop" element={<Shop />} />
+        <Route path="/sign-in" element={<SignIn />} />
       </Routes>
     </div>
   );
