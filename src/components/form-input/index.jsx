@@ -8,6 +8,7 @@ export const FormInput = ({
   variant,
   type = 'text',
   styles = {},
+  required = false,
 }) => (
   <Input
     value={value}
@@ -17,5 +18,6 @@ export const FormInput = ({
     variant={variant}
     type={type}
     style={styles}
+    isRequired={required}
   />
 );

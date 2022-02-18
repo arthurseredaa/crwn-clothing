@@ -13,8 +13,8 @@ const links = [
     link: '/contact',
   },
   {
-    text: 'sign in',
-    link: '/sign-in',
+    text: 'login',
+    link: '/login',
   },
 ];
 
@@ -26,7 +26,7 @@ export const Header = () => (
 
     <div>
       {links.map(({ text, link }) => (
-        <Link to={link} className={styles.headerLink}>
+        <Link key={text} to={link} className={styles.headerLink}>
           {text}
         </Link>
       ))}
