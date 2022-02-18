@@ -7,4 +7,11 @@
     text-transform: uppercase;
     width: 200px;
     cursor: pointer;
+
+    transition: .1s all linear;
+    opacity: 1;
+
+    &:hover {
+      opacity: .8;
+    }
   }

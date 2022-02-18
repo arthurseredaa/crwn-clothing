@@ -1,4 +1,4 @@
-import { Button } from '../Button/Button';
+import { Button } from '../button';
 import styles from './collection-item.module.scss';
 
 export const CollectionItem = ({ name, imageUrl, price }) => {
