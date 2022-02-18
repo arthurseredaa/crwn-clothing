@@ -36,19 +36,11 @@
 }
 
 .button {
-  background-color: #000;
-  font-size: 14px;
-  padding: 10px 20px;
-  border: none;
-  color: #fff;
-  text-transform: uppercase;
-  width: 200px;
   position: absolute;
   bottom: 50px;
   left: 0;
   right: 0;
   margin: 0 auto;
   z-index: 1;
-  cursor: pointer;
   display: none;
 }

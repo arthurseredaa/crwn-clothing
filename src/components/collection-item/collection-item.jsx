@@ -1,9 +1,10 @@
+import { Button } from '../Button/Button';
 import styles from './collection-item.module.scss';
 
 export const CollectionItem = ({ name, imageUrl, price }) => {
   return (
     <div className={styles.card}>
-      <button className={styles.button}>add to cart</button>
+      <Button className={styles.button}>add to cart</Button>
       <div className={styles.image_wrapper}>
         <img src={imageUrl} alt={name} className={styles.image} />
       </div>
