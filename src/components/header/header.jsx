@@ -1,35 +1,29 @@
 import { Link } from 'react-router-dom';
 import { ReactComponent as Logo } from '../../assets/images/crown.svg';
-
 import styles from './header.module.scss';
 
-const links = [
-  {
-    text: 'shop',
-    link: '/shop',
-  },
-  {
-    text: 'contact',
-    link: '/contact',
-  },
-  {
-    text: 'login',
-    link: '/login',
-  },
-];
-
-export const Header = () => (
+export const Header = ({ user, signOut }) => (
   <header className={styles.header}>
     <Link to="/">
       <Logo className={styles.logo} />
     </Link>
 
     <div>
-      {links.map(({ text, link }) => (
-        <Link key={text} to={link} className={styles.headerLink}>
-          {text}
+      <Link to={'/shop'} className={styles.headerLink}>
+        shop
+      </Link>
+      <Link to={'/contact'} className={styles.headerLink}>
+        contact
+      </Link>
+      {user?.isAuthorized ? (
+        <button className={styles.headerLink} onClick={signOut}>
+          sign out
+        </button>
+      ) : (
+        <Link to={'/login'} className={styles.headerLink}>
+          login
         </Link>
-      ))}
+      )}
     </div>
   </header>
 );

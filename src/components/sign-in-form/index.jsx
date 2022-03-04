@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { FormInput } from '../../components/form-input';
 import { Button } from '../../components/button';
 import { signInWithGoogle } from '../../firebase/index';
@@ -10,6 +11,7 @@ export const SignInForm = () => {
     email: '',
     password: '',
   });
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -22,6 +24,7 @@ export const SignInForm = () => {
   const handleGoogleLogin = async () => {
     const result = await signInWithGoogle();
     console.log(result);
+    navigate('/', { replace: true });
   };
 
   const handleEmailAndPasswordLogin = (e) => {

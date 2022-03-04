@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
 import { Home } from './pages/home';
@@ -12,11 +12,31 @@ import { Header } from './components/header/header';
 import { Login } from './pages/login';
 
 import './App.css';
+import { auth } from './firebase';
 
 function App() {
+  const [userData, setUserData] = useState(null);
+
+  useEffect(() => {
+    auth.onAuthStateChanged((user) => {
+      const { displayName, email } = user?.multiFactor?.user;
+
+      setUserData({ displayName, email, isAuthorized: true });
+    });
+  }, []);
+
+  useEffect(() => {
+    console.log(userData);
+  }, [userData]);
+
+  const handleSignOut = async () => {
+    await auth.signOut();
+    setUserData(null);
+  };
+
   return (
     <div className="app">
-      <Header />
+      <Header user={userData} signOut={handleSignOut} />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/shop/hats" element={<Hats />} />
