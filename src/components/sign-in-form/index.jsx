@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import { FormInput } from '../../components/form-input';
 import { Button } from '../../components/button';
+import { signInWithGoogle } from '../../firebase/index';
 
 import styles from './sign-in-form.module.scss';
 
-export const SignInForm = ({ onSubmit }) => {
+export const SignInForm = () => {
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -18,8 +19,18 @@ export const SignInForm = ({ onSubmit }) => {
 
   const { email, password } = formData;
 
+  const handleGoogleLogin = async () => {
+    const result = await signInWithGoogle();
+    console.log(result);
+  };
+
+  const handleEmailAndPasswordLogin = (e) => {
+    e.preventDefault();
+    console.log(formData);
+  };
+
   return (
-    <form className={styles.column} onSubmit={(e) => onSubmit(e, formData)}>
+    <form className={styles.column} onSubmit={handleEmailAndPasswordLogin}>
       <p className={styles.title}>Sign in</p>
 
       <FormInput
@@ -46,7 +57,11 @@ export const SignInForm = ({ onSubmit }) => {
         <Button type="submit" className={styles.sign_in_button}>
           Sign in
         </Button>
-        <Button type="submit" className={styles.sign_in_button}>
+        <Button
+          type="button"
+          className={styles.sign_in_button}
+          onClick={handleGoogleLogin}
+        >
           Sign in with Google
         </Button>
       </div>

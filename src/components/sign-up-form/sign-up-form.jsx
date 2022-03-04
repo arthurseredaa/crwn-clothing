@@ -86,7 +86,7 @@ export const SignUpForm = ({ onSubmit }) => {
 
         <Button
           className={styles.clear_button}
-          handleClick={clearSignUpData}
+          onClick={clearSignUpData}
           disabled={isClearButtonDisabled}
         >
           Clear

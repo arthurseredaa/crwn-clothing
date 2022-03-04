@@ -67,3 +67,10 @@
     }
   }
 }
+
+@media (max-width: 800px) {
+  .menu-item.large {
+    height: 100%;
+    max-height: 380px;
+  }
+}
