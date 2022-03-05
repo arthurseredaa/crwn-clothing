@@ -20,9 +20,9 @@ function App() {
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
       if (user?.multiFactor?.user) {
-        const { displayName, email } = user.multiFactor.user;
+        const { displayName: name, email } = user.multiFactor.user;
 
-        setUserData({ displayName, email, isAuthorized: true });
+        setUserData({ name, email, isAuthorized: true });
       }
     });
   }, []);
