@@ -13,5 +13,23 @@
   text-decoration: none;
   color: #4a4a4a;
   text-transform: uppercase;
-  margin-right: 10px;
+  transition: .1s color linear;
+
+  &:hover {
+    color: #fa8072;
+  }
+}
+
+.linksRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 300px;
+}
+
+.bag {
+  height: 30px;
+  display: inline-block;
+  cursor: pointer;
 }

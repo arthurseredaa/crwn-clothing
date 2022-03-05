@@ -19,15 +19,13 @@ function App() {
 
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
-      const { displayName, email } = user?.multiFactor?.user;
+      if (user?.multiFactor?.user) {
+        const { displayName, email } = user.multiFactor.user;
 
-      setUserData({ displayName, email, isAuthorized: true });
+        setUserData({ displayName, email, isAuthorized: true });
+      }
     });
   }, []);
-
-  useEffect(() => {
-    console.log(userData);
-  }, [userData]);
 
   const handleSignOut = async () => {
     await auth.signOut();

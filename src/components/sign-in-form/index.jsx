@@ -2,7 +2,10 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FormInput } from '../../components/form-input';
 import { Button } from '../../components/button';
-import { signInWithGoogle } from '../../firebase/index';
+import {
+  signInWithEmailAndPassword,
+  signInWithGoogle,
+} from '../../firebase/index';
 
 import styles from './sign-in-form.module.scss';
 
@@ -11,6 +14,7 @@ export const SignInForm = () => {
     email: '',
     password: '',
   });
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -27,9 +31,18 @@ export const SignInForm = () => {
     navigate('/', { replace: true });
   };
 
-  const handleEmailAndPasswordLogin = (e) => {
+  const handleEmailAndPasswordLogin = async (e) => {
     e.preventDefault();
-    console.log(formData);
+    const { email, password } = formData;
+
+    try {
+      setLoading(true);
+      const result = await signInWithEmailAndPassword(email, password);
+      setLoading(false);
+      console.log(result);
+    } catch {
+      setLoading(false);
+    }
   };
 
   return (
@@ -57,13 +70,18 @@ export const SignInForm = () => {
       />
 
       <div className={styles.buttons_row}>
-        <Button type="submit" className={styles.sign_in_button}>
-          Sign in
+        <Button
+          type="submit"
+          className={styles.sign_in_button}
+          disabled={loading}
+        >
+          {loading ? 'Loading...' : 'Sign in'}
         </Button>
         <Button
           type="button"
           className={styles.sign_in_button}
           onClick={handleGoogleLogin}
+          disabled={loading}
         >
           Sign in with Google
         </Button>

@@ -25,6 +25,19 @@ googleAuthProvider.addScope(
   'https://www.googleapis.com/auth/contacts.readonly'
 );
 
-export const signInWithGoogle = () => auth.signInWithPopup(googleAuthProvider);
+export const signInWithGoogle = () => {
+  try {
+    return auth.signInWithPopup(googleAuthProvider);
+  } catch (e) {
+    console.log(`signInWithGoogle: ${e}`);
+  }
+};
+export const signInWithEmailAndPassword = (email, password) => {
+  try {
+    return auth.signInWithEmailAndPassword(email, password);
+  } catch (e) {
+    console.log(`signInWithEmailAndPassword: ${e}`);
+  }
+};
 
 export { firebase };

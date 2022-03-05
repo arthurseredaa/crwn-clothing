@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { ReactComponent as Logo } from '../../assets/images/crown.svg';
+import bagImage from '../../assets/images/bag.png';
 import styles from './header.module.scss';
 
 export const Header = ({ user, signOut }) => (
@@ -8,7 +9,7 @@ export const Header = ({ user, signOut }) => (
       <Logo className={styles.logo} />
     </Link>
 
-    <div>
+    <div className={styles.linksRow}>
       <Link to={'/shop'} className={styles.headerLink}>
         shop
       </Link>
@@ -24,6 +25,7 @@ export const Header = ({ user, signOut }) => (
           login
         </Link>
       )}
+      <img src={bagImage} alt="" className={styles.bag} />
     </div>
   </header>
 );
