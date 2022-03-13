@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { FormInput } from '../../components/form-input';
-import { Button } from '../../components/button';
+import { FormInput } from '../form-input';
+import { Button } from '../button';
 
 import styles from './sign-up-form.module.scss';
 

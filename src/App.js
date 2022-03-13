@@ -18,7 +18,8 @@ function App() {
   const [userData, setUserData] = useState(null);
 
   useEffect(() => {
-    auth.onAuthStateChanged((user) => {
+    auth.onAuthStateChanged(async (user) => {
+      console.log(user);
       if (user?.multiFactor?.user) {
         const { displayName: name, email } = user.multiFactor.user;
 
@@ -29,6 +30,7 @@ function App() {
 
   const handleSignOut = async () => {
     await auth.signOut();
+
     setUserData(null);
   };
 

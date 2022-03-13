@@ -1,5 +1,5 @@
 import { SignInForm } from '../../components/sign-in-form';
-import { SignUpForm } from '../../components/sign-up-form/sign-up-form';
+import { SignUpForm } from '../../components/sign-up-form/';
 
 import styles from './login.module.scss';
 

@@ -5,7 +5,8 @@ import { Button } from '../../components/button';
 import {
   signInWithEmailAndPassword,
   signInWithGoogle,
-} from '../../firebase/index';
+  createUserProfileDocument,
+} from '../../firebase';
 
 import styles from './sign-in-form.module.scss';
 
@@ -27,7 +28,17 @@ export const SignInForm = () => {
 
   const handleGoogleLogin = async () => {
     const result = await signInWithGoogle();
-    console.log(result);
+
+    const { user, additionalUserInfo } = result;
+    const { uid } = user.multiFactor.user;
+    const { isNewUser, profile } = additionalUserInfo;
+    const { name, email } = profile;
+
+    if (isNewUser) {
+      const createdAt = new Date();
+      await createUserProfileDocument({ name, email, uid, createdAt });
+    }
+
     navigate('/', { replace: true });
   };
 

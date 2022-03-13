@@ -1,6 +1,7 @@
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
 import 'firebase/compat/auth';
+import { getFirestore, addDoc, collection } from 'firebase/firestore';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyBl0tmffWVe7i1iV1vaMbCP1Oh_2WKh_QE',
@@ -15,10 +16,21 @@ const firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
-export const auth = firebase.auth();
-export const firestore = firebase.firestore();
+// Firestore
+export const db = getFirestore();
+
+export const createUserProfileDocument = async ({ name, uid, email, createdAt }) => {
+  try {
+    const docRef = await addDoc(collection(db, 'users'), { name, uid, email, createdAt });
+    console.log('Document written with ID: ', docRef.id);
+  } catch (e) {
+    console.error('Error adding document: ', e);
+  }
+};
 
 // Google sign in
+export const auth = firebase.auth();
+
 const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
 googleAuthProvider.setCustomParameters({ prompt: 'select_account' });
 googleAuthProvider.addScope(
