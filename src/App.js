@@ -21,9 +21,9 @@ function App() {
     auth.onAuthStateChanged(async (user) => {
       console.log(user);
       if (user?.multiFactor?.user) {
-        const { displayName: name, email } = user.multiFactor.user;
+        const { displayName: name, email, uid } = user.multiFactor.user;
 
-        setUserData({ name, email, isAuthorized: true });
+        setUserData({ name, email, isAuthorized: true, uid });
       }
     });
   }, []);
