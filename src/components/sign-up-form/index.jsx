@@ -6,7 +6,6 @@ import styles from './sign-up-form.module.scss';
 
 export const SignUpForm = ({ onSubmit }) => {
   const [formData, setFormData] = useState({
-    name: '',
     email: '',
     password: '',
     confirmed: '',
@@ -29,21 +28,8 @@ export const SignUpForm = ({ onSubmit }) => {
   const isSignUpError = password && confirmed && password !== confirmed;
 
   return (
-    <form
-      className={styles.column}
-      onSubmit={(e) => onSubmit(e, formData)}
-    >
+    <form className={styles.column} onSubmit={(e) => onSubmit(e, formData)}>
       <p className={styles.title}>Sign up</p>
-
-      <FormInput
-        name={'name'}
-        handleChange={handleChange}
-        type="text"
-        value={name}
-        placeholder={'Name'}
-        variant="flushed"
-        required
-      />
 
       <FormInput
         name={'email'}
@@ -74,13 +60,16 @@ export const SignUpForm = ({ onSubmit }) => {
         variant="flushed"
         required
       />
-
       {isSignUpError && (
         <p className={styles.error_text}>Password does not match!</p>
       )}
 
       <div className={styles.buttons_row}>
-        <Button type="submit" className={styles.button}>
+        <Button
+          type="submit"
+          className={styles.button}
+          disabled={isSignUpError}
+        >
           Sign up
         </Button>
 
