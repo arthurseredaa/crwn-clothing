@@ -17,9 +17,12 @@ export const Header = ({ user, signOut }) => (
         contact
       </Link>
       {user?.isAuthorized ? (
-        <button className={styles.headerLink} onClick={signOut}>
-          sign out
-        </button>
+        <>
+          <button className={styles.headerLink} onClick={signOut}>
+            sign out
+          </button>
+          <div className={styles.userName}>{user.name}</div>
+        </>
       ) : (
         <Link to={'/login'} className={styles.headerLink}>
           login
